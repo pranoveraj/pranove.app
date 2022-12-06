@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+  </head>
+<body>
+  <div class="wrapper">
+    <h1>Hello Again!</h1>
+    <p>Welcome back you've <br> been missed!</p>
+    <form action="submitted.html" name="suForm" id="supform">
+      <input type="text" placeholder="Full name" id="name" onclick="resetBtn()" maxlength="30">
+      <input type="text" placeholder="Email" id="email" onclick="resetBtn()">
+      <input type="password" placeholder="Password" id="pass" onclick="resetBtn()" minlength="8">
+      
+      
+
+      <input class="align" style="width: 100px;" type="submit" id="submit-btn" value="Sign Up" onmouseover="mouseOver()">
+  </form>
+    <p class="or">
+      ----- or continue with -----
+    </p>
+    <div class="icons">
+      <i class="fab fa-google"></i>
+      <i class="fab fa-github"></i>
+      <i class="fab fa-facebook"></i>
+    </div>
+    <div class="not-member">
+      Not a member? <a href="#">Register Now</a>
+    </div>
+  </div>
+</body>
+<script>
+
+  var a = 0;
+
+  function mouseOver(){
+      
+      const name = document.forms['suForm']['name'].value;
+      const email = document.forms['suForm']['email'].value;
+      const pass = document.forms['suForm']['pass'].value;
+      const tick = document.querySelector('#check');
+
+      const emailCheck = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+
+
+      if((name == "" || !email.match(emailCheck) || pass == "" || tick.checked == false) && a==0){
+      buttonMoveLeft();
+      a = 1;
+      return false;
+      } 
+
+      if((name == "" || !email.match(emailCheck) || pass == "" || tick.checked == false) && a==1){
+      buttonMoveRight();
+      a = 2;
+      return false;
+      } 
+
+      if((name == "" || !email.match(emailCheck) || pass == "" || tick.checked == false) && a==2){
+      buttonMoveLeft();
+      a = 1;
+      return false;
+      } 
+
+      else{
+
+          // document.getElementById('submit-btn').click();  
+          document.getElementById('submit-btn').style.cursor = 'pointer';
+          return false;
+      };
+
+  };
+
+
+  
+
+  function buttonMoveLeft(){
+
+      const button = document.getElementById('submit-btn');
+      button.style.transform = 'translateX(-160%)';
+
+  };
+
+
+  function buttonMoveRight(){
+
+      const button = document.getElementById('submit-btn');
+      button.style.transform = 'translateX(160%)';
+
+  };
+
+
+  function resetBtn(){
+      const button = document.getElementById('submit-btn');
+      button.style.transform = 'translateX(0%)';
+  };
+
+
+</script>
+</html>
